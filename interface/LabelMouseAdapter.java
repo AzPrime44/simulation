@@ -9,13 +9,15 @@ public class LabelMouseAdapter extends MouseAdapter {
    private JPanel rightPanel;
    private JPanel leftPanel;
    JFrame frame;
-   JLabel emetteur;
-   JLabel recepteur;
+   JLabel emetteur = null;
+   JLabel recepteur = null;
    static int compo = 0;
    JButton drawButton;
    boolean dessin = false;
+   boolean afterConnexion = false;
    Icon iconEmeteur = new ImageIcon("../src/emeteur2.png");
    Icon iconRecepteur = new ImageIcon("../src/recepteur.png");
+   RangeInput rg = new RangeInput();
 
    public LabelMouseAdapter(JPanel rightPanel, JFrame frame, JPanel leftPanel, JButton drawButton) {
       this.rightPanel = rightPanel;// Création du panneau droit
@@ -48,8 +50,6 @@ public class LabelMouseAdapter extends MouseAdapter {
 
    @Override
    public void mouseReleased(MouseEvent e) {
-
-      compo++;
       // Création d'un nouveau label dans le panneau droit
       if (((JLabel) e.getSource()).getText().equals("Emetteur")) {
          emetteur = det("Emetteur", iconEmeteur, e);
@@ -59,26 +59,56 @@ public class LabelMouseAdapter extends MouseAdapter {
 
       }
       if (emetteur != null && recepteur != null) {
-         if (compo >= 2) {
-            drawButton.setEnabled(true);
-         }
+         drawButton.setEnabled(true);
+         afterConnexion = true;
          drawButton.addActionListener(evt -> {
-            if (rightPanel.getComponentCount() < 2) {
-               JOptionPane.showMessageDialog(rightPanel,
-                     "Il n'y a pas suffisamment de composants pour dessiner une ligne !");
-            } else
-               dessin = true;
-         });
+            // JOptionPane.showMessageDialog(rightPanel,
+            // "Il n'y a pas suffisamment de composants pour dessiner une ligne !");
 
-         rightPanel.revalidate();
-         rightPanel.repaint();
+            dessin = true;
+            ligne();
+            ligne();
+            if (afterConnexion) {
+               leftPanel.add(rg);
+               leftPanel.add(Box.createVerticalStrut(10));
+               rightPanel.revalidate();
+               rightPanel.repaint();
+               leftPanel.revalidate();
+               afterConnexion = false;
+            }
+
+         });
+      } else {
+         drawButton.setEnabled(false);
+
       }
 
    }
 
    public void ligne() {
 
+      Graphics g = rightPanel.getGraphics();
+      g.setColor(Color.BLACK);
+      g.drawLine(emetteur.getX() + emetteur.getWidth(),
+            emetteur.getY() + emetteur.getHeight() / 2,
+            recepteur.getX(), recepteur.getY() + recepteur.getHeight() / 2);
+
    }
+
+   public boolean checkConnexion(MouseEvent e, JLabel lab) {
+
+      if (((JLabel) e.getSource()) == lab) {
+         lab = null;
+         drawButton.setEnabled(false);
+         leftPanel.remove(rg);
+         rightPanel.revalidate();
+         leftPanel.revalidate();
+         dessin = false;
+         return true;
+      }
+      return false;
+   }
+   // frame.addActionListener("resize", )
 
    @Override
    public void mouseDragged(MouseEvent e) {
@@ -102,13 +132,10 @@ public class LabelMouseAdapter extends MouseAdapter {
 
       @Override
       public void mouseReleased(MouseEvent e) {
-         Graphics g = rightPanel.getGraphics();
-         g.setColor(Color.BLACK);
-         g.drawLine(emetteur.getX() + emetteur.getWidth(),
-               emetteur.getY() + emetteur.getHeight() / 2,
-               recepteur.getX(), recepteur.getY() + recepteur.getHeight() / 2);
-         rightPanel.repaint();
-         rightPanel.revalidate();
+         if (emetteur != null && recepteur != null && dessin) {
+
+            ligne();
+         }
       }
 
       @Override
@@ -117,11 +144,9 @@ public class LabelMouseAdapter extends MouseAdapter {
             JPopupMenu menu = new JPopupMenu();
             JMenuItem deleteItem = new JMenuItem("Supprimer");
             deleteItem.addActionListener(evt -> {
-               compo--;
-               if (compo < 2) {
-                  drawButton.setEnabled(false);
-                  leftPanel.revalidate();
-               }
+               checkConnexion(e, emetteur);
+               checkConnexion(e, recepteur);
+
                rightPanel.remove(((JLabel) e.getSource()));
                rightPanel.revalidate();
                rightPanel.repaint();

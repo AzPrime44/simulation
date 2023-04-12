@@ -1,6 +1,8 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ComponentEvent;
 
 public class Simulator extends JFrame {
    private JPanel leftPanel;
@@ -10,6 +12,7 @@ public class Simulator extends JFrame {
    // private JLabel emeteur;
    // private JLabel recepteur;
    private JButton drawButton;
+   // RangeInput rg = new RangeInput(0, 200, 50);
 
    public Simulator() {
       // Configuration de la fenêtre principale
@@ -36,7 +39,6 @@ public class Simulator extends JFrame {
       emeteurLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
       recepteurLabel = new JLabel("Recepteur");
       recepteurLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-      // fibreLabel = new JLabel("Fibre de connexion");
 
       // Ajout des labels au panneau gauche
       leftPanel.add(Box.createVerticalStrut(20));
@@ -45,6 +47,7 @@ public class Simulator extends JFrame {
       leftPanel.add(recepteurLabel);
       leftPanel.add(Box.createVerticalStrut(10));
       leftPanel.add(drawButton);
+      leftPanel.add(Box.createVerticalStrut(10));
 
       // Ajout des panneaux à la fenêtre principale
       add(leftPanel, BorderLayout.WEST);
@@ -56,6 +59,13 @@ public class Simulator extends JFrame {
       emeteurLabel.addMouseMotionListener(adapter);
       recepteurLabel.addMouseListener(adapter);
       recepteurLabel.addMouseMotionListener(adapter);
+      this.addComponentListener(new ComponentAdapter() {
+         @Override
+         public void componentResized(ComponentEvent e) {
+            rightPanel.repaint();
+            rightPanel.revalidate();
+         }
+      });
 
    }
 
