@@ -1,3 +1,5 @@
+package metier;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -6,12 +8,11 @@ import java.awt.*;
 public class LabelMouseAdapter extends MouseAdapter {
    private int x;
    private int y;
-   private JPanel rightPanel;
+   JPanel rightPanel;
    private JPanel leftPanel;
    JFrame frame;
    JLabel emetteur = null;
    JLabel recepteur = null;
-   static int compo = 0;
    JButton drawButton;
    boolean dessin = false;
    boolean afterConnexion = false;
@@ -32,13 +33,26 @@ public class LabelMouseAdapter extends MouseAdapter {
       label.setBounds(e.getXOnScreen() - frame.getLocationOnScreen().x - x - leftPanel.getWidth(),
             e.getYOnScreen() - frame.getLocationOnScreen().y - y - frame.getInsets().top, 130, 60);
       label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-      AdapteurOfRight adapterOfRight = new AdapteurOfRight();
+      AdapteurOfRight adapterOfRight = new AdapteurOfRight(this);
       label.addMouseListener(adapterOfRight);
       label.addMouseMotionListener(adapterOfRight);
       rightPanel.add(label);
       rightPanel.repaint();
       rightPanel.revalidate();
       return label;
+   }
+
+   public void ligne() {
+      if (emetteur != null && recepteur != null && dessin) {
+
+         System.out.println(emetteur);
+         Graphics g = rightPanel.getGraphics();
+         g.setColor(Color.BLACK);
+         g.drawLine(emetteur.getX() + emetteur.getWidth(),
+               emetteur.getY() + emetteur.getHeight() / 2,
+               recepteur.getX(), recepteur.getY() + recepteur.getHeight() / 2);
+
+      }
    }
 
    @Override
@@ -62,11 +76,8 @@ public class LabelMouseAdapter extends MouseAdapter {
          drawButton.setEnabled(true);
          afterConnexion = true;
          drawButton.addActionListener(evt -> {
-            // JOptionPane.showMessageDialog(rightPanel,
-            // "Il n'y a pas suffisamment de composants pour dessiner une ligne !");
-
+            System.out.println("dess");
             dessin = true;
-            ligne();
             ligne();
             if (afterConnexion) {
                leftPanel.add(rg);
@@ -85,28 +96,19 @@ public class LabelMouseAdapter extends MouseAdapter {
 
    }
 
-   public void ligne() {
+   public void checkConnexion(MouseEvent e) {
 
-      Graphics g = rightPanel.getGraphics();
-      g.setColor(Color.BLACK);
-      g.drawLine(emetteur.getX() + emetteur.getWidth(),
-            emetteur.getY() + emetteur.getHeight() / 2,
-            recepteur.getX(), recepteur.getY() + recepteur.getHeight() / 2);
-
-   }
-
-   public boolean checkConnexion(MouseEvent e, JLabel lab) {
-
-      if (((JLabel) e.getSource()) == lab) {
-         lab = null;
+      if (((JLabel) e.getSource()) == emetteur || ((JLabel) e.getSource()) == recepteur) {
+         if (((JLabel) e.getSource()) == emetteur)
+            emetteur = null;
+         if (((JLabel) e.getSource()) == recepteur)
+            recepteur = null;
          drawButton.setEnabled(false);
          leftPanel.remove(rg);
          rightPanel.revalidate();
          leftPanel.revalidate();
          dessin = false;
-         return true;
       }
-      return false;
    }
    // frame.addActionListener("resize", )
 
@@ -119,41 +121,4 @@ public class LabelMouseAdapter extends MouseAdapter {
       rightPanel.revalidate();
    }
 
-   class AdapteurOfRight extends MouseAdapter {
-
-      @Override
-      public void mouseDragged(MouseEvent e) {
-         JLabel label = (JLabel) e.getComponent();
-         label.setLocation(label.getX() + e.getX() - label.getWidth() / 2,
-               label.getY() + e.getY() - label.getHeight() / 2);
-         rightPanel.repaint();
-         rightPanel.revalidate();
-      }
-
-      @Override
-      public void mouseReleased(MouseEvent e) {
-         if (emetteur != null && recepteur != null && dessin) {
-
-            ligne();
-         }
-      }
-
-      @Override
-      public void mousePressed(MouseEvent e) {
-         if (SwingUtilities.isRightMouseButton(e)) {
-            JPopupMenu menu = new JPopupMenu();
-            JMenuItem deleteItem = new JMenuItem("Supprimer");
-            deleteItem.addActionListener(evt -> {
-               checkConnexion(e, emetteur);
-               checkConnexion(e, recepteur);
-
-               rightPanel.remove(((JLabel) e.getSource()));
-               rightPanel.revalidate();
-               rightPanel.repaint();
-            });
-            menu.add(deleteItem);
-            menu.show(((JLabel) e.getSource()), e.getX(), e.getY());
-         }
-      }
-   }
 }

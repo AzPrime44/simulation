@@ -1,18 +1,14 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.event.ComponentEvent;
+import metier.*;
 
 public class Simulator extends JFrame {
    private JPanel leftPanel;
    private JPanel rightPanel;
    private JLabel emeteurLabel;
    private JLabel recepteurLabel;
-   // private JLabel emeteur;
-   // private JLabel recepteur;
    private JButton drawButton;
-   // RangeInput rg = new RangeInput(0, 200, 50);
 
    public Simulator() {
       // Configuration de la fenêtre principale
@@ -59,13 +55,6 @@ public class Simulator extends JFrame {
       emeteurLabel.addMouseMotionListener(adapter);
       recepteurLabel.addMouseListener(adapter);
       recepteurLabel.addMouseMotionListener(adapter);
-      this.addComponentListener(new ComponentAdapter() {
-         @Override
-         public void componentResized(ComponentEvent e) {
-            rightPanel.repaint();
-            rightPanel.revalidate();
-         }
-      });
 
    }
 
