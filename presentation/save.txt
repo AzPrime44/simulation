@@ -1,29 +1,34 @@
+package metier;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Dimension;
-import java.util.Hashtable;
 import java.awt.event.*;
-import javax.swing.plaf.metal.*;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
 
 public class RangeInput extends JPanel {
 
     private JSlider slider;
     private JTextField textField;
     private JLabel valueLabel;
-    private JToggleButton toggleButton;
+    private JCheckBox customizeCheckBox;
 
     public RangeInput() {
-        // super(new BorderLayout());
-        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        this.setPreferredSize(new Dimension(getWidth(), 50));
-
+        super(new BorderLayout());
+        // this.setPreferredSize(new Dimension(300, 50));
+        this.setMaximumSize(new Dimension(300, 100));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JPanel top = new JPanel(new BorderLayout());
+        JPanel down = new JPanel(new BorderLayout());
         // Créer un JSlider pour représenter l'intervalle de valeurs
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 50);
+        slider.setPreferredSize(new Dimension(200, 50));
 
         // Ajouter un ChangeListener pour mettre à jour l'étiquette et le champ de texte
         slider.addChangeListener(new ChangeListener() {
@@ -39,38 +44,80 @@ public class RangeInput extends JPanel {
         textField.setMaximumSize(new Dimension(70, 25));
         textField.setHorizontalAlignment(JTextField.CENTER);
         textField.setText(Integer.toString(slider.getValue()));
-
-        // Ajouter un ActionListener pour mettre à jour le slider et l'étiquette
-        textField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int value = Integer.parseInt(textField.getText());
-                slider.setValue(value);
-                valueLabel.setText(Integer.toString(value));
-            }
-        });
-
-        // Créer une étiquette pour afficher la valeur actuelle
         valueLabel = new JLabel(Integer.toString(slider.getValue()), SwingConstants.CENTER);
         valueLabel.setPreferredSize(new Dimension(50, 20));
 
-        // Ajouter un bouton basculant pour basculer entre le slider et l'input
-        toggleButton = new JToggleButton("Slider");
-        toggleButton.addActionListener(new ActionListener() {
+        // Ajouter un ActionListener pour mettre à jour le slider et l'étiquette
+        // textField.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         int value = Integer.parseInt(textField.getText());
+        //         slider.setValue(value);
+        //         valueLabel.setText(Integer.toString(value));
+        //         RangeInput.this.revalidate();
+        //     }
+        // });
+        // textField.addFocusListener(new FocusListener() {
+        //     @Override
+        //     public void focusLost(FocusEvent e) {
+        //         int value = Integer.parseInt(textField.getText());
+        //         slider.setValue(value);
+        //         valueLabel.setText(Integer.toString(value));
+        //         RangeInput.this.revalidate();
+        //     }
+
+        //     @Override
+        //     public void focusGained(FocusEvent e) {
+        //         // Ne rien faire lorsqu'on gagne le focus sur le champ de texte
+        //     }
+        // });
+
+        public static void updateLabel() {
+            String text = textField.getText();
+            System.out.println(text);
+            try {
+                int value = Integer.parseInt(text);
+                slider.setValue(value);
+                valueLabel.setText(Integer.toString(value));
+                RangeInput.this.revalidate();
+            } catch (NumberFormatException ex) {
+                // Ne rien faire si le texte n'est pas un nombre
+            }
+        }
+        textField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateLabel();
+            }
+        });
+        
+  
+        
+        // Créer une étiquette pour afficher la valeur actuelle
+        // Ajouter une case à cocher pour personnaliser l'entrée
+        customizeCheckBox = new JCheckBox("Personnaliser");
+        customizeCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (toggleButton.isSelected()) {
+                boolean selected = customizeCheckBox.isSelected();
+                if (selected) {
                     // Afficher le champ de texte et masquer le slider
                     textField.setText(Integer.toString(slider.getValue()));
-                    remove(slider);
-                    add(textField, BorderLayout.CENTER);
-                    toggleButton.setText("Input");
+                    down.remove(slider);
+                    down.add(textField, BorderLayout.CENTER);
                 } else {
                     // Afficher le slider et masquer le champ de texte
                     slider.setValue(Integer.parseInt(textField.getText()));
-                    remove(textField);
-                    add(slider, BorderLayout.CENTER);
-                    toggleButton.setText("Slider");
+                    down.remove(textField);
+                    down.add(slider, BorderLayout.CENTER);
                 }
                 // Redessiner l'interface utilisateur
                 revalidate();
@@ -79,8 +126,15 @@ public class RangeInput extends JPanel {
         });
 
         // Ajouter les composants à la fenêtre
-        add(valueLabel, BorderLayout.WEST);
-        add(toggleButton, BorderLayout.EAST);
-        add(slider, BorderLayout.CENTER);
+        JPanel tmp = new JPanel(new BorderLayout());
+        tmp.add(valueLabel, BorderLayout.WEST);
+        JLabel l = new JLabel("km");
+        // JLabel labelTop = new JLabel("Veuiller saisir la longueur");
+        tmp.add(l, BorderLayout.EAST);
+        top.add(tmp, BorderLayout.WEST);
+        top.add(customizeCheckBox, BorderLayout.EAST);
+        down.add(slider, BorderLayout.CENTER);
+        add(top, BorderLayout.EAST);
+        add(down, BorderLayout.CENTER);
     }
 }

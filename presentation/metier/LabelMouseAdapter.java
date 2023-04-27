@@ -45,7 +45,6 @@ public class LabelMouseAdapter extends MouseAdapter {
    public void ligne() {
       if (emetteur != null && recepteur != null && dessin) {
 
-         System.out.println(emetteur);
          Graphics g = rightPanel.getGraphics();
          g.setColor(Color.BLACK);
          g.drawLine(emetteur.getX() + emetteur.getWidth(),
@@ -76,7 +75,6 @@ public class LabelMouseAdapter extends MouseAdapter {
          drawButton.setEnabled(true);
          afterConnexion = true;
          drawButton.addActionListener(evt -> {
-            System.out.println("dess");
             dessin = true;
             ligne();
             if (afterConnexion) {

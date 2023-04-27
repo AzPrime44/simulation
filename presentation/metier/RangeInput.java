@@ -3,11 +3,7 @@ package metier;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Dimension;
-import java.util.Hashtable;
 import java.awt.event.*;
-import javax.swing.plaf.metal.*;
-import javax.swing.JLabel;
-import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -18,6 +14,7 @@ public class RangeInput extends JPanel {
     private JTextField textField;
     private JLabel valueLabel;
     private JCheckBox customizeCheckBox;
+    int value;
 
     public RangeInput() {
         super(new BorderLayout());
@@ -27,7 +24,7 @@ public class RangeInput extends JPanel {
         JPanel top = new JPanel(new BorderLayout());
         JPanel down = new JPanel(new BorderLayout());
         // Créer un JSlider pour représenter l'intervalle de valeurs
-        slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 1000, 50);
         slider.setPreferredSize(new Dimension(200, 50));
 
         // Ajouter un ChangeListener pour mettre à jour l'étiquette et le champ de texte
@@ -42,9 +39,10 @@ public class RangeInput extends JPanel {
         // Créer un champ de texte pour saisir une valeur numérique
         textField = new JTextField(1);
         textField.setMaximumSize(new Dimension(70, 25));
-
         textField.setHorizontalAlignment(JTextField.CENTER);
         textField.setText(Integer.toString(slider.getValue()));
+        valueLabel = new JLabel(Integer.toString(slider.getValue()), SwingConstants.CENTER);
+        valueLabel.setPreferredSize(new Dimension(50, 20));
 
         // Ajouter un ActionListener pour mettre à jour le slider et l'étiquette
         textField.addActionListener(new ActionListener() {
@@ -56,37 +54,45 @@ public class RangeInput extends JPanel {
             }
         });
 
-        // Créer une étiquette pour afficher la valeur actuelle
-        valueLabel = new JLabel(Integer.toString(slider.getValue()), SwingConstants.CENTER);
-        valueLabel.setPreferredSize(new Dimension(50, 20));
-        // Ajouter une case à cocher pour personnaliser l'entrée
-        customizeCheckBox = new JCheckBox("Personnaliser");
-        customizeCheckBox.addActionListener(new ActionListener() {
+        textField.addFocusListener(new FocusAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean selected = customizeCheckBox.isSelected();
-                if (selected) {
-                    // Afficher le champ de texte et masquer le slider
-                    textField.setText(Integer.toString(slider.getValue()));
-                    down.remove(slider);
-                    down.add(textField, BorderLayout.CENTER);
-                } else {
-                    // Afficher le slider et masquer le champ de texte
-                    slider.setValue(Integer.parseInt(textField.getText()));
-                    down.remove(textField);
-                    down.add(slider, BorderLayout.CENTER);
+            public void focusLost(FocusEvent e) {
+                // Mise à jour de la variable d'état
+                try {
+                    value = Integer.parseInt(textField.getText());
+                } catch (NumberFormatException ex) {
+                    value = slider.getValue();
+                    textField.setText(Integer.toString(value));
                 }
-                // Redessiner l'interface utilisateur
-                revalidate();
-                repaint();
+
+                // Mise à jour du slider et du label
+                slider.setValue(value);
+                valueLabel.setText(Integer.toString(value));
+            }
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                // Ne rien faire
             }
         });
-
-        // Ajouter les composants à la fenêtre
+        customizeCheckBox = new JCheckBox("Personnaliser");
+        customizeCheckBox.addActionListener(e -> {
+            boolean selected = customizeCheckBox.isSelected();
+            if (selected) {
+                textField.setText(Integer.toString(slider.getValue()));
+                down.remove(slider);
+                down.add(textField, BorderLayout.CENTER);
+            } else {
+                slider.setValue(Integer.parseInt(textField.getText()));
+                down.remove(textField);
+                down.add(slider, BorderLayout.CENTER);
+            }
+            revalidate();
+            repaint();
+        });
         JPanel tmp = new JPanel(new BorderLayout());
         tmp.add(valueLabel, BorderLayout.WEST);
         JLabel l = new JLabel("m");
-        // JLabel labelTop = new JLabel("Veuiller saisir la longueur");
         tmp.add(l, BorderLayout.EAST);
         top.add(tmp, BorderLayout.WEST);
         top.add(customizeCheckBox, BorderLayout.EAST);
@@ -94,4 +100,5 @@ public class RangeInput extends JPanel {
         add(top, BorderLayout.EAST);
         add(down, BorderLayout.CENTER);
     }
+
 }
