@@ -14,7 +14,6 @@ public class Simulator extends JFrame {
       // Configuration de la fenêtre principale
       setTitle("simulation");
       setSize(800, 600);
-      // setLayout(new GridLayout(1, 2));
       setLayout(new BorderLayout());
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       // Création des panneaux gauche et droit
@@ -26,7 +25,6 @@ public class Simulator extends JFrame {
       drawButton.setAlignmentX(Component.CENTER_ALIGNMENT);
       rightPanel = new JPanel();
       rightPanel.setLayout(null);
-
       // Ajout d'une bordure pour séparer les deux parties de l'interface
       leftPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.BLACK));
 

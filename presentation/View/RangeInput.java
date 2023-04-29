@@ -1,4 +1,4 @@
-package metier;
+package View;
 
 import java.awt.*;
 import javax.swing.*;
@@ -18,9 +18,9 @@ public class RangeInput extends JPanel {
 
     public RangeInput() {
         super(new BorderLayout());
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         // this.setPreferredSize(new Dimension(300, 50));
         this.setMaximumSize(new Dimension(300, 100));
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JPanel top = new JPanel(new BorderLayout());
         JPanel down = new JPanel(new BorderLayout());
         // Créer un JSlider pour représenter l'intervalle de valeurs
@@ -38,7 +38,7 @@ public class RangeInput extends JPanel {
 
         // Créer un champ de texte pour saisir une valeur numérique
         textField = new JTextField(1);
-        textField.setMaximumSize(new Dimension(70, 25));
+        textField.setMaximumSize(new Dimension(70, 50));
         textField.setHorizontalAlignment(JTextField.CENTER);
         textField.setText(Integer.toString(slider.getValue()));
         valueLabel = new JLabel(Integer.toString(slider.getValue()), SwingConstants.CENTER);
@@ -92,7 +92,7 @@ public class RangeInput extends JPanel {
         });
         JPanel tmp = new JPanel(new BorderLayout());
         tmp.add(valueLabel, BorderLayout.WEST);
-        JLabel l = new JLabel("m");
+        JLabel l = new JLabel("km");
         tmp.add(l, BorderLayout.EAST);
         top.add(tmp, BorderLayout.WEST);
         top.add(customizeCheckBox, BorderLayout.EAST);

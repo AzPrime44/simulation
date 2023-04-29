@@ -1,5 +1,6 @@
 package metier;
 
+import View.Boost;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,13 +19,14 @@ public class LabelMouseAdapter extends MouseAdapter {
    boolean afterConnexion = false;
    Icon iconEmeteur = new ImageIcon("../src/emeteur2.png");
    Icon iconRecepteur = new ImageIcon("../src/recepteur.png");
-   RangeInput rg = new RangeInput();
+   Boost boost;
 
    public LabelMouseAdapter(JPanel rightPanel, JFrame frame, JPanel leftPanel, JButton drawButton) {
       this.rightPanel = rightPanel;// Création du panneau droit
       this.leftPanel = leftPanel;// Création du panneau droit
       this.frame = frame;
       this.drawButton = drawButton;
+      this.boost = new Boost(leftPanel);
    }
 
    public JLabel det(String nom, Icon icon, MouseEvent e) {
@@ -78,7 +80,7 @@ public class LabelMouseAdapter extends MouseAdapter {
             dessin = true;
             ligne();
             if (afterConnexion) {
-               leftPanel.add(rg);
+               leftPanel.add(boost);
                leftPanel.add(Box.createVerticalStrut(10));
                rightPanel.revalidate();
                rightPanel.repaint();
@@ -102,7 +104,7 @@ public class LabelMouseAdapter extends MouseAdapter {
          if (((JLabel) e.getSource()) == recepteur)
             recepteur = null;
          drawButton.setEnabled(false);
-         leftPanel.remove(rg);
+         leftPanel.remove(boost);
          rightPanel.revalidate();
          leftPanel.revalidate();
          dessin = false;
