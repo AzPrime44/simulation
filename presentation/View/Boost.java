@@ -6,8 +6,9 @@ import javax.swing.*;
 
 public class Boost extends JPanel {
    private JButton add;
-   String[] choix = { "épissures", "connecteurs", "cable de raccordement", "panneau de raccordement" };
+   String[] choix = { "episures", "connecteurs", "cable de raccordement", "panneau de raccordement" };
    JPanel leftPanel;
+   MonPanel monPanel;
 
    public Boost(JPanel leftPanel) {
       super(new BorderLayout());
@@ -15,8 +16,7 @@ public class Boost extends JPanel {
       this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
       add(new RangeInput(), BorderLayout.NORTH);
       add = new JButton("Add");
-      add(add, BorderLayout.CENTER);
-
+      add(add);
       add.addActionListener(event -> {
          ajouter();
          leftPanel.revalidate();
@@ -29,9 +29,9 @@ public class Boost extends JPanel {
       String choise = (String) JOptionPane.showInputDialog(this, "veuille selectionner", "Ajouter",
             JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
       if (choise != null) {
-
-         MonPanel monPanel = new MonPanel(choise);
-         leftPanel.add(monPanel, BorderLayout.CENTER);
+         monPanel = new MonPanel(choise);
+         monPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+         this.add(monPanel, BorderLayout.WEST);
 
       }
 

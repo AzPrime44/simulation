@@ -80,7 +80,7 @@ public class LabelMouseAdapter extends MouseAdapter {
             dessin = true;
             ligne();
             if (afterConnexion) {
-               leftPanel.add(boost);
+               leftPanel.add(boost, BorderLayout.WEST);
                leftPanel.add(Box.createVerticalStrut(10));
                rightPanel.revalidate();
                rightPanel.repaint();
