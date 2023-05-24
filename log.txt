@@ -1,0 +1,29 @@
+2023-05-24 01:00:26
+La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+
+Puisance d' entrée : 34.0
+Puisance de sortie : -1733.0
+sensibilite : 12.0
+_________________________________________________________
+2023-05-24 01:02:39
+La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+
+Puisance d' entrée : 34.0
+Puisance de sortie : -2272.0
+sensibilite : 67.0
+_________________________________________________________
+2023-05-24 01:05:55
+Success ! signal transmis avec une puissance de -13.41 dBm 
+
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.41
+sensibilite : -20.0
+Marge : 6.59
+_________________________________________________________
+2023-05-24 01:23:16
+Success ! signal transmis avec une puissance de -13.41 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.41
+sensibilite : -20.0
+Marge : 6.59
+_________________________________________________________

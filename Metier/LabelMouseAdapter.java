@@ -1,7 +1,10 @@
-package metier;
+package Metier;
 
-import View.Boost;
 import javax.swing.*;
+
+import Calc.Calcule;
+import Calc.Resultat;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.*;
@@ -17,25 +20,28 @@ public class LabelMouseAdapter extends MouseAdapter {
    JButton drawButton;
    boolean dessin = false;
    boolean afterConnexion = false;
-   Icon iconEmeteur = new ImageIcon("../src/emeteur2.png");
-   Icon iconRecepteur = new ImageIcon("../src/recepteur.png");
-   Boost boost;
+   Icon iconEmeteur = new ImageIcon("./src/emeteur2.png");
+   Icon iconRecepteur = new ImageIcon("./src/recepteur.png");
+   Calcule calcule;
+   Resultat resultat;
 
    public LabelMouseAdapter(JPanel rightPanel, JFrame frame, JPanel leftPanel, JButton drawButton) {
       this.rightPanel = rightPanel;// Création du panneau droit
       this.leftPanel = leftPanel;// Création du panneau droit
       this.frame = frame;
       this.drawButton = drawButton;
-      this.boost = new Boost(leftPanel);
+      // this.boost = new Boost(leftPanel);
+      this.calcule = new Calcule(leftPanel, frame, rightPanel);
+      this.resultat = new Resultat(calcule, frame, rightPanel);
    }
 
-   public JLabel det(String nom, Icon icon, MouseEvent e) {
+   public JLabel det(String nom, Icon icon, MouseEvent e, AdapteurOfRight adapterOfRight) {
+      ;
       JLabel label = new JLabel(nom);
       label.setIcon(icon);
       label.setBounds(e.getXOnScreen() - frame.getLocationOnScreen().x - x - leftPanel.getWidth(),
             e.getYOnScreen() - frame.getLocationOnScreen().y - y - frame.getInsets().top, 130, 60);
       label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-      AdapteurOfRight adapterOfRight = new AdapteurOfRight(this);
       label.addMouseListener(adapterOfRight);
       label.addMouseMotionListener(adapterOfRight);
       rightPanel.add(label);
@@ -66,11 +72,14 @@ public class LabelMouseAdapter extends MouseAdapter {
    @Override
    public void mouseReleased(MouseEvent e) {
       // Création d'un nouveau label dans le panneau droit
+
       if (((JLabel) e.getSource()).getText().equals("Emetteur")) {
-         emetteur = det("Emetteur", iconEmeteur, e);
+         AdapteurOfRight adapterOfRight = new AdapteurOfRight(this, true, calcule);
+         emetteur = det("Pin =" + Integer.toString(calcule.puissanceEntree) + " dBm", iconEmeteur, e, adapterOfRight);
 
       } else {
-         recepteur = det("Recepteur", iconRecepteur, e);
+         AdapteurOfRight adapterOfRight = new AdapteurOfRight(this, false, calcule);
+         recepteur = det("S =" + Integer.toString(calcule.sensibilite) + " dBm", iconRecepteur, e, adapterOfRight);
 
       }
       if (emetteur != null && recepteur != null) {
@@ -80,7 +89,7 @@ public class LabelMouseAdapter extends MouseAdapter {
             dessin = true;
             ligne();
             if (afterConnexion) {
-               leftPanel.add(boost, BorderLayout.WEST);
+               leftPanel.add(calcule);
                leftPanel.add(Box.createVerticalStrut(10));
                rightPanel.revalidate();
                rightPanel.repaint();
@@ -104,7 +113,7 @@ public class LabelMouseAdapter extends MouseAdapter {
          if (((JLabel) e.getSource()) == recepteur)
             recepteur = null;
          drawButton.setEnabled(false);
-         leftPanel.remove(boost);
+         leftPanel.remove(calcule);
          rightPanel.revalidate();
          leftPanel.revalidate();
          dessin = false;

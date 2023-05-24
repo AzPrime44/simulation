@@ -12,6 +12,7 @@ public class RangeInput extends JPanel {
 
     private JSlider slider;
     private JTextField textField;
+    private JTextField tf;
     private JLabel valueLabel;
     private JCheckBox customizeCheckBox;
     int value;
@@ -43,7 +44,7 @@ public class RangeInput extends JPanel {
         textField.setText(Integer.toString(slider.getValue()));
         valueLabel = new JLabel(Integer.toString(slider.getValue()), SwingConstants.CENTER);
         valueLabel.setPreferredSize(new Dimension(50, 20));
-
+        tf = new JTextField();
         // Ajouter un ActionListener pour mettre à jour le slider et l'étiquette
         textField.addActionListener(new ActionListener() {
             @Override
@@ -99,6 +100,17 @@ public class RangeInput extends JPanel {
         down.add(slider, BorderLayout.CENTER);
         add(top, BorderLayout.EAST);
         add(down, BorderLayout.CENTER);
+        JPanel pann = new JPanel(new BorderLayout());
+        pann.add(new JLabel("Attenuation de la fibre"), BorderLayout.NORTH);
+        tf.setHorizontalAlignment(JTextField.CENTER);
+        pann.add(tf, BorderLayout.CENTER);
+        add(pann, BorderLayout.SOUTH);
+    }
+
+    public float getAtenutionFibre() {
+        int valeur = slider.getValue();
+        float attenuation = tf.getText().equals("") ? 1 : Integer.parseInt(tf.getText());
+        return valeur * attenuation;
     }
 
 }
