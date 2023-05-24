@@ -45,8 +45,8 @@ public class AdapteurOfRight extends MouseAdapter {
          deleteItem.addActionListener(evt -> {
             labelMouseAdapter.checkConnexion(e);
             rightPanel.remove(((JLabel) e.getSource()));
-            // rightPanel.revalidate();
-            // rightPanel.repaint();
+            rightPanel.revalidate();
+            rightPanel.repaint();
          });
 
          if (this.isEmetteur) {
@@ -71,7 +71,8 @@ public class AdapteurOfRight extends MouseAdapter {
    JMenuItem itemManager(String text, MouseEvent e, String var) {
       JMenuItem puissance = new JMenuItem(text);
       puissance.addActionListener(evt -> {
-         String userInput = JOptionPane.showInputDialog("Entrez la puissance :");
+         String userInput = JOptionPane
+               .showInputDialog("Entrez la valeur de la  :" + (var.equals("Pin") ? "Puissance Entree" : "Sensibilité"));
          try {
             laPuissance = Integer.parseInt(userInput);
             ((JLabel) e.getSource()).setText(var + " =" + Integer.toString(laPuissance) + " dBm");

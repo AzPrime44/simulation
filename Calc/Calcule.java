@@ -1,6 +1,9 @@
 package Calc;
 
 import javax.swing.*;
+
+import Metier.LabelMouseAdapter;
+
 import java.awt.*;
 import View.*;
 
@@ -10,10 +13,10 @@ public class Calcule extends JPanel {
    public int puissanceEntree = 0, sensibilite = 0;
    Resultat resultat;
 
-   public Calcule(JPanel leftPanel, JFrame frame, JPanel rightPanel) {
+   public Calcule(JPanel leftPanel, LabelMouseAdapter labelMouseAdapter) {
       this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
       this.boost = new Boost(leftPanel);
-      this.resultat = new Resultat(this, frame, rightPanel);
+      this.resultat = new Resultat(labelMouseAdapter);
       this.add(boost);
       add(Box.createVerticalStrut(10));
       this.add = new JButton("Contraint");
@@ -22,10 +25,13 @@ public class Calcule extends JPanel {
       });
       this.stimuler = new JButton("Stimuler");
       this.reset = new JButton("reset");
+      reset.addActionListener(event -> {
+         removeComponent();
+         labelMouseAdapter.removeComponent();
+      });
       stimuler.addActionListener(event -> {
-         // perte();
-         // puissanceSortie();
-         resultat.parcourir();
+         float tab[] = this.puissanceSortie();
+         resultat.parcourir(tab);
       });
       this.stimuler.setEnabled(false);
       JPanel panneau = new JPanel();
@@ -96,11 +102,20 @@ public class Calcule extends JPanel {
 
    public void stimulons() {
       if (puissanceEntree != 0 && sensibilite != 0) {
-         System.out.println("stimuler");
          this.stimuler.setEnabled(true);
          this.revalidate();
          this.repaint();
       }
    }
 
+   void removeComponent() {
+      for (Component component : boost.getComponents()) {
+         boost.remove(component);
+
+      }
+      boost.revalidate();
+      boost.repaint();
+      puissanceEntree = 0;
+      sensibilite = 0;
+   }
 }

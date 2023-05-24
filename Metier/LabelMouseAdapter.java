@@ -12,9 +12,9 @@ import java.awt.*;
 public class LabelMouseAdapter extends MouseAdapter {
    private int x;
    private int y;
-   JPanel rightPanel;
+   public JPanel rightPanel;
    private JPanel leftPanel;
-   JFrame frame;
+   public JFrame frame;
    JLabel emetteur = null;
    JLabel recepteur = null;
    JButton drawButton;
@@ -23,7 +23,7 @@ public class LabelMouseAdapter extends MouseAdapter {
    Icon iconEmeteur = new ImageIcon("./src/emeteur2.png");
    Icon iconRecepteur = new ImageIcon("./src/recepteur.png");
    Calcule calcule;
-   Resultat resultat;
+   String color = "black";
 
    public LabelMouseAdapter(JPanel rightPanel, JFrame frame, JPanel leftPanel, JButton drawButton) {
       this.rightPanel = rightPanel;// Création du panneau droit
@@ -31,8 +31,7 @@ public class LabelMouseAdapter extends MouseAdapter {
       this.frame = frame;
       this.drawButton = drawButton;
       // this.boost = new Boost(leftPanel);
-      this.calcule = new Calcule(leftPanel, frame, rightPanel);
-      this.resultat = new Resultat(calcule, frame, rightPanel);
+      this.calcule = new Calcule(leftPanel, this);
    }
 
    public JLabel det(String nom, Icon icon, MouseEvent e, AdapteurOfRight adapterOfRight) {
@@ -53,8 +52,16 @@ public class LabelMouseAdapter extends MouseAdapter {
    public void ligne() {
       if (emetteur != null && recepteur != null && dessin) {
 
-         Graphics g = rightPanel.getGraphics();
-         g.setColor(Color.BLACK);
+         Graphics gg = rightPanel.getGraphics();
+         Graphics2D g = (Graphics2D) gg;
+         if (color.equals("red")) {
+            g.setStroke(new BasicStroke(3));
+            g.setColor(Color.RED);
+         } else if (color.equals("green")) {
+            g.setStroke(new BasicStroke(3));
+            g.setColor(Color.GREEN);
+         } else
+            g.setColor(Color.BLACK);
          g.drawLine(emetteur.getX() + emetteur.getWidth(),
                emetteur.getY() + emetteur.getHeight() / 2,
                recepteur.getX(), recepteur.getY() + recepteur.getHeight() / 2);
@@ -91,13 +98,13 @@ public class LabelMouseAdapter extends MouseAdapter {
             if (afterConnexion) {
                leftPanel.add(calcule);
                leftPanel.add(Box.createVerticalStrut(10));
-               rightPanel.revalidate();
-               rightPanel.repaint();
                leftPanel.revalidate();
                afterConnexion = false;
             }
 
          });
+         rightPanel.revalidate();
+         rightPanel.repaint();
       } else {
          drawButton.setEnabled(false);
 
@@ -128,6 +135,22 @@ public class LabelMouseAdapter extends MouseAdapter {
             e.getYOnScreen() - frame.getLocationOnScreen().y - y);
       rightPanel.repaint();
       rightPanel.revalidate();
+   }
+
+   public void dessinerAvecCouleur(String color) {
+      this.color = color;
+      ligne();
+   }
+
+   public void removeComponent() {
+      drawButton.setEnabled(false);
+      emetteur = null;
+      recepteur = null;
+      leftPanel.remove(calcule);
+      rightPanel.removeAll();
+      rightPanel.repaint();
+      rightPanel.revalidate();
+
    }
 
 }

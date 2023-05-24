@@ -11,17 +11,15 @@ public class LeftPanel extends JPanel {
    JLabel emeteurLabel;
    JLabel recepteurLabel;
    JPanel rightPanel;
-   JFrame frame;
 
    public LeftPanel(JPanel rightPanel, JFrame frame) {
       this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
       this.rightPanel = rightPanel;
-      this.frame = frame;
-      drawButton = new JButton("Connexion");
+      drawButton = new JButton("ajouter fibre");
       drawButton.setEnabled(false);
       drawButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-      LabelMouseAdapter adapter = new LabelMouseAdapter(this.rightPanel, this.frame, this, this.drawButton);
+      LabelMouseAdapter adapter = new LabelMouseAdapter(this.rightPanel, frame, this, this.drawButton);
 
       // Ajout d'une bordure pour séparer les deux parties de l'interface
 
