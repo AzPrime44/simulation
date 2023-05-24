@@ -3,8 +3,6 @@ package Metier;
 import javax.swing.*;
 
 import Calc.Calcule;
-import Calc.Resultat;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.*;

@@ -3,8 +3,6 @@ package Calc;
 import javax.swing.*;
 
 import Metier.LabelMouseAdapter;
-
-import java.awt.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
