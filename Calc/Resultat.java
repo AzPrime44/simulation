@@ -55,6 +55,7 @@ public class Resultat {
          JOptionPane.showMessageDialog(this.labelMouseAdapter.frame, messageFinale);
          labelMouseAdapter.ligne();
       } catch (IOException e) {
+
          System.out.println(
                "Erreur lors de l'enregistrement des informations dans le fichier log.txt : " + e.getMessage());
       }
