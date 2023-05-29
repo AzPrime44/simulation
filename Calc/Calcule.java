@@ -12,6 +12,7 @@ public class Calcule extends JPanel {
    Boost boost;
    public int puissanceEntree = 0, sensibilite = 0;
    Resultat resultat;
+   String data = "";
 
    public Calcule(JPanel leftPanel, LabelMouseAdapter labelMouseAdapter) {
       this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -31,7 +32,7 @@ public class Calcule extends JPanel {
       });
       stimuler.addActionListener(event -> {
          float tab[] = this.puissanceSortie();
-         resultat.parcourir(tab);
+         resultat.parcourir(tab, data);
       });
       this.stimuler.setEnabled(false);
       JPanel panneau = new JPanel();
@@ -45,14 +46,24 @@ public class Calcule extends JPanel {
 
    public float perte() {
       float pertes = 0;
+      data = " \n \t Contraine lors de la simulation :\n" + "👉 Longueur de la fibre : " + boost.getFiberheight()
+            + "\n 👉 Atténuation de la fibre : " + boost.getAtenutionFibre();
       for (Component component : boost.getComponents()) {
          if (component instanceof MonPanel) {
             MonPanel monPanel = (MonPanel) component;
+            String tmp;
             if (monPanel.contientCable) {
                float pertePartiel = 1;
                for (Component compo : monPanel.getComponents()) {
+                  if (compo instanceof JLabel) {
+                     tmp = ((JLabel) compo).getText();
+                     data += (tmp.contains("👉") ? "\n" : " \n \t \t") + tmp;
+                     continue;
+                  }
                   if (compo instanceof JTextField) {
-                     String tmp = ((JTextField) compo).getText();
+                     tmp = ((JTextField) compo).getText();
+                     data += " :" + tmp + "\n";
+
                      if (tmp.equals(""))
                         continue;
                      pertePartiel *= Float.parseFloat(tmp);
@@ -63,8 +74,15 @@ public class Calcule extends JPanel {
                pertes += pertePartiel;
             } else {
                for (Component compo : monPanel.getComponents()) {
+                  if (compo instanceof JLabel) {
+                     tmp = ((JLabel) compo).getText();
+                     data += (tmp.contains("👉") ? "\n" : "\n \t \t") + tmp;
+
+                     continue;
+                  }
                   if (compo instanceof JTextField) {
-                     String tmp = ((JTextField) compo).getText();
+                     tmp = ((JTextField) compo).getText();
+                     data += " :" + tmp + "\n";
                      pertes += tmp.equals("") ? 0 : Float.parseFloat(tmp);
                      System.out.println(tmp);
                   }
@@ -85,11 +103,12 @@ public class Calcule extends JPanel {
 
    public float[] puissanceSortie() {
       float pout = puissanceEntree - pertesTotal();
+      float fiberheight = boost.getFiberheight();
       if (pout >= sensibilite) {
          System.out.println("success , marge = " + (pout - sensibilite));
-         return new float[] { 1, puissanceEntree, pout, sensibilite };
+         return new float[] { 1, puissanceEntree, pout, sensibilite, fiberheight };
       }
-      return new float[] { 0, puissanceEntree, pout, sensibilite };
+      return new float[] { 0, puissanceEntree, pout, sensibilite, fiberheight };
    }
 
    public void setPuissanceEntree(int puissance) {
@@ -108,11 +127,17 @@ public class Calcule extends JPanel {
       }
    }
 
+   public String getData() {
+      return data;
+   }
+
    void removeComponent() {
       for (Component component : boost.getComponents()) {
-         boost.remove(component);
+         if (component instanceof MonPanel)
+            boost.remove(component);
 
       }
+      stimuler.setEnabled(false);
       boost.revalidate();
       boost.repaint();
       puissanceEntree = 0;

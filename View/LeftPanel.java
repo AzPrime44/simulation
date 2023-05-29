@@ -16,7 +16,7 @@ public class LeftPanel extends JPanel {
       this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
       this.rightPanel = rightPanel;
-      drawButton = new JButton("ajouter fibre");
+      drawButton = new JButton("Ajouter fibre");
       drawButton.setEnabled(false);
       drawButton.setAlignmentX(Component.CENTER_ALIGNMENT);
       LabelMouseAdapter adapter = new LabelMouseAdapter(this.rightPanel, frame, this, this.drawButton);

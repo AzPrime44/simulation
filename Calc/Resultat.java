@@ -21,12 +21,12 @@ public class Resultat {
 
    }
 
-   public void parcourir(float tab[]) {
+   public void parcourir(float tab[], String data) {
       Date date = new Date();
       SimpleDateFormat dateFormat = new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy");
       String dateStr = dateFormat.format(date);
-      messageFinale = tab[0] == 1 ? "Success ! signal transmis avec une puissance de " + tab[2] + " dBm \n"
-            : "La communication optique a échoué en raison d'une puissance reçue insuffisante!!!\n";
+      messageFinale = tab[0] == 1 ? "Success !\n signal transmis avec une puissance de " + tab[2] + " dBm \n"
+            : "Echec ! \n La communication optique a échoué en raison d'une puissance reçue insuffisante!!!\n";
       messageFinale += "Puisance d' entrée : " + tab[1] + "\n" + "Puisance de sortie : " + tab[2] + "\n";
       messageFinale += "sensibilite : " + tab[3] + "\n";
       if (tab[0] == 1)
@@ -37,8 +37,8 @@ public class Resultat {
 
          // Écrire la date dans le fichier
          writer.println(dateStr);
-
-         writer.println(messageFinale);
+         String msg = data + messageFinale;
+         writer.println(msg);
 
          writer.println("_________________________________________________________");
          // Fermer le PrintWriter pour finaliser l'écriture dans le fichier
@@ -50,8 +50,6 @@ public class Resultat {
             labelMouseAdapter.dessinerAvecCouleur("green");
          else
             labelMouseAdapter.dessinerAvecCouleur("red");
-         // labelMouseAdapter.rightPanel.repaint();
-         // labelMouseAdapter.rightPanel.revalidate();
          JOptionPane.showMessageDialog(this.labelMouseAdapter.frame, messageFinale);
          labelMouseAdapter.ligne();
       } catch (IOException e) {

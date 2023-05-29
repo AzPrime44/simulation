@@ -36,4 +36,8 @@ public class Boost extends JPanel {
       return rg.getAtenutionFibre();
    }
 
+   public float getFiberheight() {
+      return rg.getFiberheight();
+   }
+
 }

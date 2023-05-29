@@ -113,4 +113,8 @@ public class RangeInput extends JPanel {
         return valeur * attenuation;
     }
 
+    public float getFiberheight() {
+        return slider.getValue();
+    }
+
 }

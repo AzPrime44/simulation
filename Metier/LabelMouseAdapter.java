@@ -6,6 +6,8 @@ import Calc.Calcule;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LabelMouseAdapter extends MouseAdapter {
    private int x;
@@ -90,16 +92,17 @@ public class LabelMouseAdapter extends MouseAdapter {
       if (emetteur != null && recepteur != null) {
          drawButton.setEnabled(true);
          afterConnexion = true;
-         drawButton.addActionListener(evt -> {
-            dessin = true;
-            ligne();
-            if (afterConnexion) {
-               leftPanel.add(calcule);
-               leftPanel.add(Box.createVerticalStrut(10));
-               leftPanel.revalidate();
-               afterConnexion = false;
+         drawButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               dessin = true;
+               ligne();
+               if (afterConnexion) {
+                  leftPanel.add(calcule);
+                  leftPanel.add(Box.createVerticalStrut(10));
+                  leftPanel.revalidate();
+                  afterConnexion = false;
+               }
             }
-
          });
          rightPanel.revalidate();
          rightPanel.repaint();
@@ -141,6 +144,8 @@ public class LabelMouseAdapter extends MouseAdapter {
    }
 
    public void removeComponent() {
+      color = "black";
+      dessin = false;
       drawButton.setEnabled(false);
       emetteur = null;
       recepteur = null;
