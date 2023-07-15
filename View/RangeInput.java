@@ -2,9 +2,9 @@ package View;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.Dimension;
+
 import java.awt.event.*;
-import javax.swing.SwingConstants;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -50,25 +50,26 @@ public class RangeInput extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int value = Integer.parseInt(textField.getText());
-                slider.setValue(value);
-                valueLabel.setText(Integer.toString(value));
+                // slider.setValue(value);
+                valueLabel.setText(textField.getText());
             }
         });
 
         textField.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
-                // Mise à jour de la variable d'état
-                try {
-                    value = Integer.parseInt(textField.getText());
-                } catch (NumberFormatException ex) {
-                    value = slider.getValue();
-                    textField.setText(Integer.toString(value));
-                }
+                // // Mise à jour de la variable d'état
+                // try {
+                // value = Integer.parseInt(textField.getText());
+                // } catch (NumberFormatException ex) {
+
+                // value = slider.getValue();
+                // textField.setText(Integer.toString(value));
+                // }
 
                 // Mise à jour du slider et du label
-                slider.setValue(value);
-                valueLabel.setText(Integer.toString(value));
+                // slider.setValue(value);
+                valueLabel.setText(textField.getText());
             }
 
             @Override
@@ -84,7 +85,15 @@ public class RangeInput extends JPanel {
                 down.remove(slider);
                 down.add(textField, BorderLayout.CENTER);
             } else {
-                slider.setValue(Integer.parseInt(textField.getText()));
+                String texte = textField.getText();
+                if (texte.matches("\\d+\\.\\d+")) {
+                    float tmpValeur = Float.parseFloat(texte);
+                    slider.setValue((int) tmpValeur);
+                    valueLabel.setText(Integer.toString(slider.getValue()));
+                } else {
+                    slider.setValue(Integer.parseInt(texte));
+                    valueLabel.setText(texte);
+                }
                 down.remove(textField);
                 down.add(slider, BorderLayout.CENTER);
             }
@@ -107,14 +116,22 @@ public class RangeInput extends JPanel {
         add(pann, BorderLayout.SOUTH);
     }
 
-    public float getAtenutionFibre() {
-        int valeur = slider.getValue();
-        float attenuation = tf.getText().equals("") ? 1 : Integer.parseInt(tf.getText());
-        return valeur * attenuation;
+    public float getFiberheight() {
+        boolean selected = customizeCheckBox.isSelected();
+        if (selected) {
+            return Float.parseFloat(textField.getText());
+
+        } else
+            return slider.getValue();
+
     }
 
-    public float getFiberheight() {
-        return slider.getValue();
+    public float getAtenutionFibre() {
+
+        if (tf.getText().equals("")) {
+            return 0;
+        }
+        return Float.parseFloat(tf.getText());
     }
 
 }

@@ -256,3 +256,468 @@ Puisance de sortie : 6.99
 sensibilite : -29.0
 Marge : 35.989998
 _________________________________________________________
+ 09:15:28 30-05-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 2.0👉Atténuation de la fibre : 2.0
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.3
+Success !
+ signal transmis avec une puissance de 6.59 dBm 
+Puisance d' entrée : 10.0
+Puisance de sortie : 6.59
+sensibilite : -20.0
+Marge : 26.59
+_________________________________________________________
+ 09:16:56 30-05-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 40.0👉Atténuation de la fibre : 40.0Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : 10.0
+Puisance de sortie : -30.0
+sensibilite : -20.0
+
+_________________________________________________________
+ 21:10:46 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : 10.0
+Puisance de sortie : -41.4
+sensibilite : -20.0
+
+_________________________________________________________
+ 21:11:02 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -61.4
+sensibilite : -20.0
+
+_________________________________________________________
+ 21:11:22 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : 10.0
+Puisance de sortie : -41.4
+sensibilite : 20.0
+
+_________________________________________________________
+ 21:12:09 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -61.4
+sensibilite : 20.0
+
+_________________________________________________________
+ 21:12:30 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : 10.0
+Puisance de sortie : -41.4
+sensibilite : -20.0
+
+_________________________________________________________
+ 21:12:41 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : 10.0
+Puisance de sortie : -41.4
+sensibilite : -20.0
+
+_________________________________________________________
+ 21:12:55 09-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Episures
+👉 Valeur de Atténuation en dB :0.4
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :1
+
+👉 Atténuation de la cable en dB: :1
+Success !
+ signal transmis avec une puissance de 48.6 dBm 
+Puisance d' entrée : 100.0
+Puisance de sortie : 48.6
+sensibilite : -20.0
+Marge : 68.6
+_________________________________________________________
+ 15:03:38 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 2.0👉Atténuation de la fibre : 2.0
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.2
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+Success !
+ signal transmis avec une puissance de -13.21 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.21
+sensibilite : -20.0
+Marge : 6.79
+_________________________________________________________
+ 16:22:12 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 50.0👉Atténuation de la fibre : 50.0
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -61.41
+sensibilite : -20.0
+
+_________________________________________________________
+ 16:26:53 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 1.98👉Atténuation de la fibre : 1.98
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+Success !
+ signal transmis avec une puissance de -13.39 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.39
+sensibilite : -20.0
+Marge : 6.6099997
+_________________________________________________________
+ 16:46:11 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉Longueur de la fibre : 1.98👉Atténuation de la fibre : 1.0
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+
+ 
+ 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+Success !
+ signal transmis avec une puissance de -12.41 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -12.41
+sensibilite : -20.0
+Marge : 7.59
+_________________________________________________________
+ 16:50:01 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+ 👉 Atténuation de la fibre : 1.0
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+ 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+Success !
+ signal transmis avec une puissance de -13.389999 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.389999
+sensibilite : -20.0
+Marge : 6.6100006
+_________________________________________________________
+ 16:56:17 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 50.0
+ 👉 Atténuation de la fibre : 2.0 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -110.01
+sensibilite : -20.0
+
+_________________________________________________________
+ 16:57:00 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 50.0
+ 👉 Atténuation de la fibre : 2.0 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :2
+Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -110.02
+sensibilite : -20.0
+
+_________________________________________________________
+ 16:59:44 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+ 👉 Atténuation de la fibre : 1.0 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.01
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+Success !
+ signal transmis avec une puissance de -13.39 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.39
+sensibilite : -20.0
+Marge : 6.6099997
+_________________________________________________________
+ 17:04:06 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.0
+ 👉 Atténuation de la fibre : 1.0 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.02
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :1.7
+Success !
+ signal transmis avec une puissance de -12.72 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -12.72
+sensibilite : -20.0
+Marge : 7.2799997
+_________________________________________________________
+ 17:04:18 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+ 👉 Atténuation de la fibre : 1.0 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.02
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :1.7
+Success !
+ signal transmis avec une puissance de -13.7 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.7
+sensibilite : -20.0
+Marge : 6.3
+_________________________________________________________
+ 17:07:33 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+ 👉 Atténuation de la fibre : 1.0
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.8
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.6
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+ 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.02
+
+👉 Atténuation de la cable en dB: :1
+Success !
+ signal transmis avec une puissance de -14.1 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -14.1
+sensibilite : -20.0
+Marge : 5.8999996
+_________________________________________________________
+ 17:09:21 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+ 👉 Atténuation de la fibre : 1.0
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.8
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.6
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.3
+ 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.02
+
+👉 Atténuation de la cable en dB: :1
+Success !
+ signal transmis avec une puissance de -13.7 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.7
+sensibilite : -20.0
+Marge : 6.3
+_________________________________________________________

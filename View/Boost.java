@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Boost extends JPanel {
-   String[] choix = { "Episures", "Connecteurs", "Cable de Raccordement", "Panneau de Raccordement" };
+   String[] choix = { "Perte Epissure Fusion", "Perte Epissure Mécanique","Connecteurs", "Cable de Raccordement", "Panneau de Raccordement" };
    JPanel leftPanel;
    MonPanel monPanel;
    RangeInput rg;

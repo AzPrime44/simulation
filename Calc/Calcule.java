@@ -47,7 +47,7 @@ public class Calcule extends JPanel {
    public float perte() {
       float pertes = 0;
       data = " \n \t Contraine lors de la simulation :\n" + "👉 Longueur de la fibre : " + boost.getFiberheight()
-            + "\n 👉 Atténuation de la fibre : " + boost.getAtenutionFibre();
+            + "\n👉 Atténuation de la fibre : " + boost.getAtenutionFibre();
       for (Component component : boost.getComponents()) {
          if (component instanceof MonPanel) {
             MonPanel monPanel = (MonPanel) component;
@@ -62,12 +62,14 @@ public class Calcule extends JPanel {
                   }
                   if (compo instanceof JTextField) {
                      tmp = ((JTextField) compo).getText();
-                     data += " :" + tmp + "\n";
+                     if (tmp.equals("")) {
 
-                     if (tmp.equals(""))
-                        continue;
-                     pertePartiel *= Float.parseFloat(tmp);
-                     System.out.println(tmp);
+                        tmp = "pas d attenuation";
+                     } else {
+
+                        pertePartiel *= Float.parseFloat(tmp);
+                     }
+                     data += " :" + tmp + "\n";
                   }
 
                }
@@ -84,7 +86,6 @@ public class Calcule extends JPanel {
                      tmp = ((JTextField) compo).getText();
                      data += " :" + tmp + "\n";
                      pertes += tmp.equals("") ? 0 : Float.parseFloat(tmp);
-                     System.out.println(tmp);
                   }
 
                }
@@ -98,7 +99,8 @@ public class Calcule extends JPanel {
    public float pertesTotal() {
       float perte = perte();
       float attenutionFibre = boost.getAtenutionFibre();
-      return perte + attenutionFibre;
+      float attenuationHeight = boost.getFiberheight();
+      return perte + attenutionFibre * attenuationHeight;
    }
 
    public float[] puissanceSortie() {
