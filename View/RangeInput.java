@@ -49,8 +49,6 @@ public class RangeInput extends JPanel {
         textField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int value = Integer.parseInt(textField.getText());
-                // slider.setValue(value);
                 valueLabel.setText(textField.getText());
             }
         });
@@ -58,17 +56,6 @@ public class RangeInput extends JPanel {
         textField.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
-                // // Mise à jour de la variable d'état
-                // try {
-                // value = Integer.parseInt(textField.getText());
-                // } catch (NumberFormatException ex) {
-
-                // value = slider.getValue();
-                // textField.setText(Integer.toString(value));
-                // }
-
-                // Mise à jour du slider et du label
-                // slider.setValue(value);
                 valueLabel.setText(textField.getText());
             }
 
