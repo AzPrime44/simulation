@@ -721,3 +721,92 @@ Puisance de sortie : -13.7
 sensibilite : -20.0
 Marge : 6.3
 _________________________________________________________
+ 23:19:45 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+👉 Atténuation de la fibre : 1.0
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.6
+
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+ 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.02
+
+👉 Atténuation de la cable en dB: :1
+Success !
+ signal transmis avec une puissance de -13.7 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.7
+sensibilite : -20.0
+Marge : 6.3
+_________________________________________________________
+ 23:20:53 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 60.0
+👉 Atténuation de la fibre : 1.0Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -70.0
+sensibilite : -20.0
+
+_________________________________________________________
+ 23:48:06 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 1.98
+👉 Atténuation de la fibre : 1.0
+ 	 	Perte Epissure Fusion
+👉 Valeur de Atténuation en dB :0.4
+
+ 	 	Perte Epissure Mécanique
+👉 Valeur de Atténuation en dB :0.3
+ 
+ 	 	Cable de Raccordement
+👉 Longueur en Km :0.02
+
+👉 Atténuation de la cable en dB: :1
+
+ 	 	Panneau de Raccordement
+👉 Valeur de Atténuation en dB :0.6
+
+ 	 	Connecteurs
+👉 Valeur de Atténuation en dB :0.4
+Success !
+ signal transmis avec une puissance de -13.7 dBm 
+Puisance d' entrée : -10.0
+Puisance de sortie : -13.7
+sensibilite : -20.0
+Marge : 6.3
+_________________________________________________________
+ 23:49:13 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 159.0
+👉 Atténuation de la fibre : 1.0Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -169.0
+sensibilite : -20.0
+
+_________________________________________________________
+ 23:49:18 15-07-2023
+ 
+ 	 Contraine lors de la simulation :
+👉 Longueur de la fibre : 159.0
+👉 Atténuation de la fibre : 1.0Echec ! 
+ La communication optique a échoué en raison d'une puissance reçue insuffisante!!!
+Puisance d' entrée : -10.0
+Puisance de sortie : -169.0
+sensibilite : -20.0
+
+_________________________________________________________
